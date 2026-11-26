@@ -1,7 +1,9 @@
+import { isEscapeKey } from './util.js';
+
 const COMMENTS_PER_PORTION = 5;
 
 const bigPictureElement = document.querySelector('.big-picture');
-const closeButton = bigPictureElement.querySelector('.big-picture__cancel');
+const closeButtonElement = bigPictureElement.querySelector('.big-picture__cancel');
 const imageElement = bigPictureElement.querySelector('.big-picture__img img');
 const likesCountElement = bigPictureElement.querySelector('.likes-count');
 const captionElement = bigPictureElement.querySelector('.social__caption');
@@ -70,7 +72,7 @@ const renderPictureDetails = (photo) => {
 };
 
 const onDocumentKeydown = (evt) => {
-  if (evt.key === 'Escape') {
+  if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeBigPicture();
   }
@@ -99,7 +101,7 @@ function closeBigPicture () {
   commentsShown = 0;
 }
 
-closeButton.addEventListener('click', () => {
+closeButtonElement.addEventListener('click', () => {
   closeBigPicture();
 });
 
